@@ -6,7 +6,7 @@ const config: DocsThemeConfig = {
     <>
       <div style={{ display: "flex", alignItems: "center" }}>
         <img
-          src="/images/Logo.png"
+          src="/MeteorDocs/images/Logo.png"
           alt="MeteorNvim Logo"
           width="30px"
           style={{ marginRight: "5px" }}
