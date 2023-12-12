@@ -4,10 +4,16 @@ const withNextra = require('nextra')({
   themeConfig: './theme.config.tsx',
 })
 
+const isProd = process.env.NODE_ENV = "production"
+
 const nextraConfig = withNextra({
   reactStrictMode: true,
   swcMinify: false,
-  distDir: "build"
+  output: "export",
+  distDir: "build",
+  images: {
+    unoptimized: true,
+  }
 })
 
 module.exports = nextraConfig
