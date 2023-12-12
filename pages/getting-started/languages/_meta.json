@@ -1,0 +1,12 @@
+{
+  "cpp": "C/C++",
+  "css": "Css/Scss",
+  "html": "Html",
+  "java": "Java",
+  "javascript": "Javascript/Typescript/React",
+  "json": "Json",
+  "python": "Python",
+  "rust": "Rust",
+  "vue": "VueJS",
+  "zig": "Zig"
+}

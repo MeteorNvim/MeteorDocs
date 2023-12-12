@@ -1,0 +1,43 @@
+# Mappings
+
+## Default
+
+| Action                | Mode   | Shortcut        | Key Combination             | Command                                        |
+|-----------------------|--------|------------------|-----------------------------|------------------------------------------------|
+| Change Theme          | Normal | &lt;Leader&gt;t | Leader + t                  | :Telescope theme_switcher&lt;CR&gt;                 |
+| Show Hover            | Normal | &lt;Leader&gt;h | Leader + h                  | :lua vim.lsp.buf.hover()&lt;CR&gt;                  |
+| Show Signature Help   | Normal | &lt;Leader&gt;s | Leader + s                  | :lua vim.lsp.buf.signature_help()&lt;CR&gt;          |
+| Clear Highlighting    | Normal | &lt;Leader&gt;l | Leader + l                  | :noh&lt;CR&gt;                                     |
+| Format with Neoformat  | Normal | &lt;Leader&gt;f | Leader + f                  | :lua vim.lsp.buf.format()&lt;CR&gt;                 |
+| Rename                | Normal | &lt;Leader&gt;r | Leader + r                  | :lua require('renamer').rename()&lt;CR&gt;         |
+| Code Actions          | Normal | &lt;Leader&gt;c | Leader + c                  | :lua require('telescope').extensions.code_actions.code_actions()&lt;CR&gt; |
+| Toggle NvimTree       | Normal, Insert | &lt;C-B&gt; | Ctrl + B                    | :NvimTreeToggle&lt;CR&gt;                           |
+| Open Terminal         | Normal, Insert | &lt;C-t&gt; | Ctrl + T                    | :terminal&lt;CR&gt;                                |
+| Cut in Insert Mode     | Insert | &lt;C-BS&gt;     | Ctrl + Backspace            | &lt;C-W&gt;                                        |
+| Contextual Menu       | Normal, Insert, Visual | &lt;RightMouse&gt; | Right Mouse Button       | :popup Meteor&lt;CR&gt;                            |
+| Split Vertically      | Normal | &lt;leader&gt;sv    | Leader + sv                 | :vsp&lt;CR&gt;                                     |
+| Split Horizontally    | Normal | &lt;leader&gt;sh  | Leader + sh                 | :sp&lt;CR&gt;                                    |
+| Copy to Clipboard     | Visual | &lt;C-C&gt;        | Ctrl + C                    | y:lua ClipboardYank()&lt;CR&gt;gv                  |
+| Copy to Clipboard     | Normal | &lt;C-C&gt;        | Ctrl + C                    | yy:lua ClipboardYank()&lt;CR&gt;                   |
+| Paste from Clipboard  | Insert | &lt;C-V&gt;      | Ctrl + V                    | :lua ClipboardPaste()&lt;CR&gt;p                   |
+| Undo                  | Normal, Insert | &lt;C-Z&gt; | Ctrl + Z                    | :u&lt;CR&gt;                                       |
+| Redo                  | Normal, Insert | &lt;C-Y&gt; | Ctrl + Y                    | :redo&lt;CR&gt;                                    |
+| Select All            | Normal, Insert | &lt;C-A&gt; | Ctrl + A                    | ggVG                                         |
+| Save                  | Normal, Insert | &lt;C-S&gt; | Ctrl + S                    | :retab | :w!&lt;CR&gt;                              |
+| Move Selection Right  | Visual | &lt;TAB&gt;      | Tab                         | &gt;gv                                          |
+| Move Selection Left   | Visual | &lt;S-TAB&gt;  | Shift + Tab                 | &lt;gv                                         |
+| Delete in Visual Mode | Visual | &lt;BS&gt;           | Backspace                   | "_d                                          |
+| Delete without saving to clipboard | Normal | &lt;C-K&gt; | Ctrl + K                  | "_dd                                       |
+| Next/Previous Buffer   | Normal | &lt;C-PageDown&gt; / &lt;C-PageUp&gt; | Ctrl + PageDown y Ctrl + PageUp | :BufferLineCycleNext&lt;CR&gt; / :BufferLineCyclePrev&lt;CR&gt; |
+| Move Buffer Next/Prev | Normal | &lt;C-ScrollWheelUp&gt; / &lt;C-ScrollWheelDown&gt; | Ctrl + Scroll Up y Ctrl + Scroll Down | :BufferLineMoveNext&lt;CR&gt; / :BufferLineMovePrev&lt;CR&gt; |
+| Toggle Comments | Normal, Insert | &lt;C-7&gt; | Ctrl + 7                 | :CommentToggle&lt;CR&gt;                         |
+| Move Lines Down/Up    | Normal, Insert | &lt;C-Down&gt; / &lt;C-Up&gt; | Ctrl + Down y Ctrl + Up | :m .+1&lt;CR&gt;== / :m .-2&lt;CR&gt;==               |
+
+## Add Mappings
+
+You can modify or add your own mappings in `~/.config/nvim/lua/userconfig/mappings.lua`
+
+**Example**
+```lua filename="mappings.lua" {} copy
+M.map('n', "<C-t>", "<CMD>:terminal<CR>", { silent = true })
+```

@@ -1,0 +1,8 @@
+{
+  "maps": "Mapping",
+  "theme": "Theme Switcher",
+  "plugins": "Plugin Management",
+  "discord": "Discord Rich Presence",
+  "context-menu": "Contextual Menu",
+  "lsp": "Language Server"
+}

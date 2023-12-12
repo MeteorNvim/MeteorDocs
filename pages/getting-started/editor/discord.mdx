@@ -1,0 +1,23 @@
+## Discord Rich Presence
+
+<div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+  <img src="/images/discord.png" width="300" style={{ marginRight: '10px' }}  />
+  <img src="/images/discord3.png" width="300" style={{ marginRight: '10px' }} />
+</div>
+
+**Discord rpc is activated by default**
+
+## Configuration
+Go to `~/.config/nvim/lua/userconfig/config/presence.lua` and there you can modify what you want
+```lua filename="presence.lua" {} copy
+require("presence"):setup({
+    workspace_text = function(git_project_name, buffer)
+        local project_name = git_project_name
+        if not git_project_name then
+            project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
+        end
+
+        return string.format("Workspace: %s", project_name)
+    end,
+})
+```

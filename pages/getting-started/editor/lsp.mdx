@@ -1,0 +1,107 @@
+# LSP: Mason and LspSettings
+<div align="center">
+  <img src="/images/mason.png" width=""/>
+</div>
+
+**with Mason.nvim you can easily and quickly install an lsp**
+
+## Example with tsserver
+
+### Installation
+`:LspInstall tsserver`
+
+### Configuration
+Run `:LspSettings tsserver` and a file called **tsserver.json** will open
+
+Configuration example activating inlay hints
+```json filename="tsserver.json" {} copy
+{
+  "javascript.inlayHints.includeInlayEnumMemberValueHints": true,
+  "javascript.inlayHints.includeInlayFunctionLikeReturnTypeHints": true,
+  "javascript.inlayHints.includeInlayFunctionParameterTypeHints": true,
+  "javascript.inlayHints.includeInlayParameterNameHints": "all",
+  "javascript.inlayHints.includeInlayParameterNameHintsWhenArgumentMatchesName": true,
+  "javascript.inlayHints.includeInlayPropertyDeclarationTypeHints": true,
+  "javascript.inlayHints.includeInlayVariableTypeHints": true,
+
+  "typescript.inlayHints.includeInlayEnumMemberValueHints": true,
+  "typescript.inlayHints.includeInlayFunctionLikeReturnTypeHints": true,
+  "typescript.inlayHints.includeInlayFunctionParameterTypeHints": true,
+  "typescript.inlayHints.includeInlayParameterNameHints": "all",
+  "typescript.inlayHints.includeInlayParameterNameHintsWhenArgumentMatchesName": true,
+  "typescript.inlayHints.includeInlayPropertyDeclarationTypeHints": true,
+  "typescript.inlayHints.includeInlayVariableTypeHints": true
+}
+```
+
+## What to do if mason is not supported on your platform
+you will have to configure lsp manually from the file `~/.config/nvim/lua/userconfig/lsp.lua`
+
+### Manual Installation
+```lua filename="lsp.lua" {} copy
+require('lspconfig')['tsserver'].setup {
+  capabilities = capabilities,
+  on_attach = on_attach
+}
+```
+
+### Manual Configuration
+You can modify everything you want: **commands, root dirs, settings, etc.**
+
+```lua filename="lsp.lua" {} copy
+require('lspconfig')['tsserver'].setup {
+  cmd = { "typescript-language-server", "--stdio" },
+  filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
+  init_options = {
+    hostInfo = "neovim"
+  },
+  settings = {
+    javascript = {
+      inlayHints = {
+        includeInlayEnumMemberValueHints = true,
+        includeInlayFunctionLikeReturnTypeHints = true,
+        includeInlayFunctionParameterTypeHints = true,
+        includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
+        includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+        includeInlayPropertyDeclarationTypeHints = true,
+        includeInlayVariableTypeHints = true,
+      },
+    },
+    typescript = {
+      inlayHints = {
+        includeInlayEnumMemberValueHints = true,
+        includeInlayFunctionLikeReturnTypeHints = true,
+        includeInlayFunctionParameterTypeHints = true,
+        includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
+        includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+        includeInlayPropertyDeclarationTypeHints = true,
+        includeInlayVariableTypeHints = true,
+      },
+    },
+  },
+  single_file_support = true,
+  root_dir = require("lspconfig").util.root_pattern("package.json", "tsconfig.json", "jsconfig.json", ".git"),
+  on_attach = on_attach
+}
+```
+
+## Formatters
+Many lsp's like rust analyzer or zls come with default formatters which can be called with the command `:lua vim.lsp.buf.format()`
+
+For cases where there is no default formatter you can use Mason to install formatters and null-ls will take care of assigning them
+
+### Example with Python
+`:MasonInstall autopep8`
+
+**With null-ls:**
+<div align="center">
+  <img src="/images/fmt.png" width=""/>
+</div>
+
+**Without null-ls:**
+<div align="center">
+  <img src="/images/fmt2.png" width=""/>
+</div>
+
+### In case mason does not work on your platform
+You can manually install the formatters and use the following command `:Neoformat` click [here](https://github.com/sbdchd/neoformat) for more information about **Neoformat**

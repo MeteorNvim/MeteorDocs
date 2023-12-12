@@ -1,0 +1,20 @@
+# Contextual Menu
+<div align="center">
+  <img src="/images/contextmenu.png" width=""/>
+  <img src="/images/contextmenu2.png" width=""/>
+</div>
+
+## How to use
+The contextual menu requires the use of a mouse, to use it you simply have to right click and the menu will appear over the vim cursor
+
+## Customization
+You can modify the context menu to your liking from: `~/.config/nvim/lua/userconfig/contextmenu.lua`
+
+**Example:**
+```lua filename="contextmenu.lua" {} copy
+-- Hello World
+vim.cmd([[:amenu 90.100 Meteor.Hello\ World <cmd>:lua print("Hello World")<CR>]])
+```
+<div align="center">
+  <img src="/images/contextmenu3.png" width=""/>
+</div>

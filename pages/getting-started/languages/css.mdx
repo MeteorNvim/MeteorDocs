@@ -1,0 +1,32 @@
+# Css/Scss
+<div align="center">
+  <kbd>
+    <img src="/images/css.png" width=""/>
+  </kbd>
+</div>
+
+## Installing LSP
+
+`:LspInstall cssls`
+
+## Installing Formatter
+
+`:MasonInstall prettier`
+
+## If mason is not supported on your platform
+
+### Setup LSP
+
+go to: `~/.config/nvim/lua/userconfig/lsp.lua`
+
+and add these lines
+```lua filename="lsp.lua" {} copy
+require('lspconfig')['cssls'].setup {
+  capabilities = capabilities,
+  on_attach = on_attach
+}
+```
+
+### Formatter
+
+If lsp does not provide a formatter, you can use the following command: `:Neoformat` click [here](https://github.com/sbdchd/neoformat) for more information
