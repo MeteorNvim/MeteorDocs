@@ -7,6 +7,7 @@ const withNextra = require('nextra')({
 const isProd = process.env.NODE_ENV = "production"
 
 const nextraConfig = withNextra({
+  basePath: isProd ? "/MeteorDocs" : "",
   reactStrictMode: true,
   swcMinify: false,
   output: "export",
