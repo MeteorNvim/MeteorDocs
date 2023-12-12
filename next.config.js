@@ -4,10 +4,8 @@ const withNextra = require('nextra')({
   themeConfig: './theme.config.tsx',
 })
 
-const isProd = process.env.NODE_ENV = "production"
-
 const nextraConfig = withNextra({
-  basePath: isProd ? "/MeteorDocs" : "",
+  basePath: "/MeteorDocs",
   reactStrictMode: true,
   swcMinify: false,
   output: "export",
