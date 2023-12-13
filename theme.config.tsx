@@ -23,7 +23,7 @@ const config: DocsThemeConfig = {
         property="og:description"
         content="MeteorNvim enhances Neovim with LSP-based autocompletion, a theme switcher, Discord RPC, inlay hints, and more. Elevate your coding experience!"
       />
-      <link rel="icon" href="/favicon.ico" sizes="any" />
+      <link rel="icon" href="/MeteorDocs/favicon.ico" sizes="any" />
     </>
   ),
   project: {
