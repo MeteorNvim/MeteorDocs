@@ -39,17 +39,17 @@ you will have to configure lsp manually from the file `~/.config/nvim/lua/userco
 
 ### Manual Installation
 ```lua filename="lsp.lua" {} copy
-require('lspconfig')['tsserver'].setup {
+vim.lsp.config('tsserver', {
   capabilities = capabilities,
   on_attach = on_attach
-}
+})
 ```
 
 ### Manual Configuration
 You can modify everything you want: **commands, root dirs, settings, etc.**
 
 ```lua filename="lsp.lua" {} copy
-require('lspconfig')['tsserver'].setup {
+vim.lsp.config('tsserver', {
   cmd = { "typescript-language-server", "--stdio" },
   filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
   init_options = {
@@ -80,9 +80,12 @@ require('lspconfig')['tsserver'].setup {
     },
   },
   single_file_support = true,
-  root_dir = require("lspconfig").util.root_pattern("package.json", "tsconfig.json", "jsconfig.json", ".git"),
+  root_dir = root_dir = function(bufnr, on_dir)
+    local fname = vim.api.nvim_buf_get_name(bufnr)
+    on_dir(util.root_pattern("package.json", "tsconfig.json", "jsconfig.json", ".git")(fname))
+  end,
   on_attach = on_attach
-}
+})
 ```
 
 ## Formatters
