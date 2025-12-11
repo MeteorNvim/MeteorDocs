@@ -6,35 +6,10 @@
 </div>
 
 ## Language Server
-`:LspInstall tsserver`
+`:LspInstall vtsls`
 
 ## Formatter
 `:MasonInstall prettier`
-
-## Inlay Hints
-**It's experimental so there may be bugs.**
-
-`:LspSettings tsserver`
-
-```json filename="tsserver.json" {} copy
-{
-  "javascript.inlayHints.includeInlayEnumMemberValueHints": true,
-  "javascript.inlayHints.includeInlayFunctionLikeReturnTypeHints": true,
-  "javascript.inlayHints.includeInlayFunctionParameterTypeHints": true,
-  "javascript.inlayHints.includeInlayParameterNameHints": "all",
-  "javascript.inlayHints.includeInlayParameterNameHintsWhenArgumentMatchesName": true,
-  "javascript.inlayHints.includeInlayPropertyDeclarationTypeHints": true,
-  "javascript.inlayHints.includeInlayVariableTypeHints": true,
-
-  "typescript.inlayHints.includeInlayEnumMemberValueHints": true,
-  "typescript.inlayHints.includeInlayFunctionLikeReturnTypeHints": true,
-  "typescript.inlayHints.includeInlayFunctionParameterTypeHints": true,
-  "typescript.inlayHints.includeInlayParameterNameHints": "all",
-  "typescript.inlayHints.includeInlayParameterNameHintsWhenArgumentMatchesName": true,
-  "typescript.inlayHints.includeInlayPropertyDeclarationTypeHints": true,
-  "typescript.inlayHints.includeInlayVariableTypeHints": true
-}
-```
 
 ## If mason is not supported on your platform
 
@@ -44,8 +19,8 @@ go to: `~/.config/nvim/lua/userconfig/lsp.lua`
 
 and add these lines
 ```lua filename="lsp.lua" {} copy
-vim.lsp.config('tsserver', {
-  cmd = { "typescript-language-server", "--stdio" },
+vim.lsp.config('vtsls', {
+  cmd = { "vtsls", "--stdio" },
   filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
   init_options = {
     hostInfo = "neovim"
@@ -53,24 +28,22 @@ vim.lsp.config('tsserver', {
   settings = {
     javascript = {
       inlayHints = {
-        includeInlayEnumMemberValueHints = true,
-        includeInlayFunctionLikeReturnTypeHints = true,
-        includeInlayFunctionParameterTypeHints = true,
-        includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
-        includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-        includeInlayPropertyDeclarationTypeHints = true,
-        includeInlayVariableTypeHints = true,
+        enumMemberValues = { enabled = true },
+        functionLikeReturnTypes = { enabled = true },
+        parameterNames = { enabled = "literals" }, -- "none" | "literals" | "all"
+        parameterTypes = { enabled = true },
+        propertyDeclarationTypes = { enabled = true },
+        variableTypes = { enabled = true },
       },
     },
     typescript = {
       inlayHints = {
-        includeInlayEnumMemberValueHints = true,
-        includeInlayFunctionLikeReturnTypeHints = true,
-        includeInlayFunctionParameterTypeHints = true,
-        includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
-        includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-        includeInlayPropertyDeclarationTypeHints = true,
-        includeInlayVariableTypeHints = true,
+        enumMemberValues = { enabled = true },
+        functionLikeReturnTypes = { enabled = true },
+        parameterNames = { enabled = "literals" }, -- "none" | "literals" | "all"
+        parameterTypes = { enabled = true },
+        propertyDeclarationTypes = { enabled = true },
+        variableTypes = { enabled = true },
       },
     },
   },

@@ -5,41 +5,17 @@
 
 **with Mason.nvim you can easily and quickly install an lsp**
 
-## Example with tsserver
+## Example with vtsls
 
 ### Installation
-`:LspInstall tsserver`
-
-### Configuration
-Run `:LspSettings tsserver` and a file called **tsserver.json** will open
-
-Configuration example activating inlay hints
-```json filename="tsserver.json" {} copy
-{
-  "javascript.inlayHints.includeInlayEnumMemberValueHints": true,
-  "javascript.inlayHints.includeInlayFunctionLikeReturnTypeHints": true,
-  "javascript.inlayHints.includeInlayFunctionParameterTypeHints": true,
-  "javascript.inlayHints.includeInlayParameterNameHints": "all",
-  "javascript.inlayHints.includeInlayParameterNameHintsWhenArgumentMatchesName": true,
-  "javascript.inlayHints.includeInlayPropertyDeclarationTypeHints": true,
-  "javascript.inlayHints.includeInlayVariableTypeHints": true,
-
-  "typescript.inlayHints.includeInlayEnumMemberValueHints": true,
-  "typescript.inlayHints.includeInlayFunctionLikeReturnTypeHints": true,
-  "typescript.inlayHints.includeInlayFunctionParameterTypeHints": true,
-  "typescript.inlayHints.includeInlayParameterNameHints": "all",
-  "typescript.inlayHints.includeInlayParameterNameHintsWhenArgumentMatchesName": true,
-  "typescript.inlayHints.includeInlayPropertyDeclarationTypeHints": true,
-  "typescript.inlayHints.includeInlayVariableTypeHints": true
-}
-```
+`:LspInstall vtsls`
 
 ## What to do if mason is not supported on your platform
 you will have to configure lsp manually from the file `~/.config/nvim/lua/userconfig/lsp.lua`
 
 ### Manual Installation
 ```lua filename="lsp.lua" {} copy
-vim.lsp.config('tsserver', {
+vim.lsp.config('vtsls', {
   capabilities = capabilities,
   on_attach = on_attach
 })
@@ -49,8 +25,8 @@ vim.lsp.config('tsserver', {
 You can modify everything you want: **commands, root dirs, settings, etc.**
 
 ```lua filename="lsp.lua" {} copy
-vim.lsp.config('tsserver', {
-  cmd = { "typescript-language-server", "--stdio" },
+vim.lsp.config('vtsls', {
+  cmd = { "vtsls", "--stdio" },
   filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
   init_options = {
     hostInfo = "neovim"
@@ -58,24 +34,22 @@ vim.lsp.config('tsserver', {
   settings = {
     javascript = {
       inlayHints = {
-        includeInlayEnumMemberValueHints = true,
-        includeInlayFunctionLikeReturnTypeHints = true,
-        includeInlayFunctionParameterTypeHints = true,
-        includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
-        includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-        includeInlayPropertyDeclarationTypeHints = true,
-        includeInlayVariableTypeHints = true,
+        enumMemberValues = { enabled = true },
+        functionLikeReturnTypes = { enabled = true },
+        parameterNames = { enabled = "literals" }, -- "none" | "literals" | "all"
+        parameterTypes = { enabled = true },
+        propertyDeclarationTypes = { enabled = true },
+        variableTypes = { enabled = true },
       },
     },
     typescript = {
       inlayHints = {
-        includeInlayEnumMemberValueHints = true,
-        includeInlayFunctionLikeReturnTypeHints = true,
-        includeInlayFunctionParameterTypeHints = true,
-        includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
-        includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-        includeInlayPropertyDeclarationTypeHints = true,
-        includeInlayVariableTypeHints = true,
+        enumMemberValues = { enabled = true },
+        functionLikeReturnTypes = { enabled = true },
+        parameterNames = { enabled = "literals" }, -- "none" | "literals" | "all"
+        parameterTypes = { enabled = true },
+        propertyDeclarationTypes = { enabled = true },
+        variableTypes = { enabled = true },
       },
     },
   },
