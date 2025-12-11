@@ -1,18 +1,23 @@
-/** @type {import('next').NextConfig} */
-const withNextra = require('nextra')({
+// next.config.mjs
+import nextra from 'nextra';
+
+const withNextra = nextra({
   theme: 'nextra-theme-docs',
   themeConfig: './theme.config.tsx',
-})
+});
 
-const nextraConfig = withNextra({
+const config = {
   basePath: "/MeteorDocs",
   reactStrictMode: true,
   swcMinify: false,
+
+  // Static export
   output: "export",
   distDir: "build",
+
   images: {
     unoptimized: true,
-  }
-})
+  },
+};
 
-module.exports = nextraConfig
+export default withNextra(config);
