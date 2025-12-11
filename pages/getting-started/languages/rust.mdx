@@ -21,10 +21,10 @@ go to: `~/.config/nvim/lua/userconfig/lsp.lua`
 
 and add these lines
 ```lua filename="lsp.lua" {} copy
-require('lspconfig')['rust_analyzer'].setup {
+vim.lsp.config('rust_analyzer', {
   capabilities = capabilities,
   on_attach = on_attach
-}
+})
 ```
 
 ### Formatter

@@ -21,10 +21,10 @@ go to: `~/.config/nvim/lua/userconfig/lsp.lua`
 
 and add these lines
 ```lua filename="lsp.lua" {} copy
-require('lspconfig')['cssls'].setup {
+vim.lsp.config('cssls', {
   capabilities = capabilities,
   on_attach = on_attach
-}
+})
 ```
 
 ### Formatter

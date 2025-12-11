@@ -20,10 +20,10 @@ go to: `~/.config/nvim/lua/userconfig/lsp.lua`
 
 and add these lines
 ```lua filename="lsp.lua" {} copy
-require('lspconfig')['clangd'].setup {
+vim.lsp.config('clangd', {
   capabilities = capabilities,
   on_attach = on_attach
-}
+})
 ```
 
 ### Formatter

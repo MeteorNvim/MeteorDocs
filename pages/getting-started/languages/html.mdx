@@ -31,22 +31,21 @@ go to: `~/.config/nvim/lua/userconfig/lsp.lua`
 
 and add these lines
 ```lua filename="lsp.lua" {} copy
-require('lspconfig')['html'].setup {
+vim.lsp.config('html', {
   capabilities = capabilities,
   on_attach = on_attach
-}
+})
 
-require('lspconfig')['emmet_language_server'].setup {
+vim.lsp.config('emmet_language_server', {
   capabilities = capabilities,
   on_attach = on_attach
-}
+})
 
-require('lspconfig')['tailwindcss'].setup {
+vim.lsp.config('tailwindcss', {
   capabilities = capabilities,
   on_attach = on_attach
-}
+})
 ```
-
 ### Formatter
 
 If lsp does not provide a formatter, you can use the following command: `:Neoformat` click [here](https://github.com/sbdchd/neoformat) for more information

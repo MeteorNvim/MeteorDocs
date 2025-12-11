@@ -30,19 +30,11 @@ go to: `~/.config/nvim/lua/userconfig/lsp.lua`
 
 and add these lines
 ```lua filename="lsp.lua" {} copy
-require('lspconfig')['vuels'].setup {
+vim.lsp.config('vuels', {
   capabilities = capabilities,
   on_attach = on_attach
-}
+})
 ```
-or
-```lua filename="lsp.lua" {} copy
-require('lspconfig')['volar'].setup {
-  capabilities = capabilities,
-  on_attach = on_attach
-}
-```
-
 
 ### Formatter
 

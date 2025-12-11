@@ -19,10 +19,10 @@ go to: `~/.config/nvim/lua/userconfig/lsp.lua`
 
 and add these lines
 ```lua filename="lsp.lua" {} copy
-require('lspconfig')['jsonls'].setup {
+vim.lsp.config('jsonls', {
   capabilities = capabilities,
   on_attach = on_attach
-}
+})
 ```
 
 ### Formatter

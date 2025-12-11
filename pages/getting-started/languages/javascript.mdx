@@ -44,7 +44,7 @@ go to: `~/.config/nvim/lua/userconfig/lsp.lua`
 
 and add these lines
 ```lua filename="lsp.lua" {} copy
-require('lspconfig')['tsserver'].setup {
+vim.lsp.config('tsserver', {
   cmd = { "typescript-language-server", "--stdio" },
   filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
   init_options = {
@@ -77,7 +77,7 @@ require('lspconfig')['tsserver'].setup {
   single_file_support = true,
   root_dir = require("lspconfig").util.root_pattern("package.json", "tsconfig.json", "jsconfig.json", ".git"),
   on_attach = on_attach
-}
+})
 ```
 
 ### Formatter
