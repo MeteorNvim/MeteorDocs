@@ -6,17 +6,12 @@
 </div>
 
 ## Installing LSP
-you have 2 options:
+`:LspInstall vue_ls`
 
-*   `:LspInstall vuels`
+## Typescript
+If you are working with Typescript in your Vue projects, you also need to install the Typescript language server:
 
-*   `:LspInstall volar`
-
-## Volar
-If you are using Volar you have to install in your Vue project the following library:
-* `pnpm install -D @vue/typescript-plugin`
-* `yarn add -D @vue/typescript-plugin`
-* `npm install -D @vue/typescript-plugin`
+`:LspInstall vtsls`
 
 ## Installing Formatter
 
@@ -30,7 +25,7 @@ go to: `~/.config/nvim/lua/userconfig/lsp.lua`
 
 and add these lines
 ```lua filename="lsp.lua" {} copy
-vim.lsp.config('vuels', {
+vim.lsp.config('vue_ls', {
   capabilities = capabilities,
   on_attach = on_attach
 })
